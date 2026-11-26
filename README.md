@@ -1,16 +1,36 @@
-# Pulse Data — landing page
+# Pulse Data landing page
 
-A single-file landing page (`index.html`) for Pulse Data, a physical-world AI data collection and labelling company. No build step and no dependencies: open the file in a browser or deploy it to any static host (Netlify, Vercel, GitHub Pages, S3).
+The landing page for Pulse Data, a physical-world AI data collection and labelling company. It's plain HTML, CSS and JS with no build step.
 
-The layout follows physicaldata.ai: a floating pill nav, a dark hero with a live session console, light and dark sections that alternate, proof stats, question cards, a sensor kit, a market comparison, pricing, a tabbed FAQ, a gradient call-to-action band and a floating sample toast. It also borrows the bento grid and gradient headings from Linear, and the centred two-tone heading, ruled grid and glow button from Lemni.
+## View it locally
+
+Serve the folder and open http://localhost:8000:
+
+```bash
+python3 -m http.server 8000
+```
+
+You can also double-click `index.html`, but some browsers block the stylesheet and script over `file://` because of the security policy, so serving it is more reliable.
+
+## Files
+
+| File | What it is |
+|---|---|
+| `index.html` | The page |
+| `styles.css` | All styles; colours and fonts are variables at the top |
+| `main.js` | Marker draw-in, the labels toggle and form checks |
+| `assets/mine-drill.webp` | The sample dataset frame |
+| `_headers` | Security headers for Netlify or Cloudflare Pages |
+| `PRODUCT.md`, `DESIGN.md` | Product facts and the design system |
+| `SECURITY.md` | Security measures and the checklist for connecting the form |
+| `.claude/skills/` | Design, motion and planning skills for Claude Code |
 
 ## Before launch
 
-- **Replace the placeholder figures.** Site counts, the site roster, the ramp-up numbers, prices ($18/h, 300 h minimum) and the market comparison ranges are examples, not real data.
-- **Connect the form.** The request form's submit handler is marked `TODO` in the `<script>` block. Point it at Formspree, HubSpot, Netlify Forms or your own backend.
-- **Update brand details.** Change the company name, logo (the `#logo` symbol in the SVG sprite), email address and social links.
-- **Tune the colours.** Every colour is a CSS variable under `:root`.
+- **Connect the form.** See the `TODO` in `main.js` and the checklist in `SECURITY.md`.
+- **Add real proof as it arrives.** The page deliberately has no stats, prices or customer names. Add them only when they're real.
+- **More footage.** The hero strip reuses one frame. Swap in consecutive frames from a real clip, and add frames from other site types.
 
 ## Preview
 
-![Desktop hero](docs/preview-desktop.png)
+![Desktop first viewport](docs/preview-desktop.png)
