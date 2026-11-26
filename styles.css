@@ -76,7 +76,8 @@ h1, h2, h3, h4 { font-weight: 510; text-wrap: balance; }
 .nav.scrolled { background: rgba(8, 9, 10, .78); border-color: var(--line-soft); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
 .nav__in { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .brand { display: flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 590; letter-spacing: -.02em; }
-.brand svg { width: 22px; height: 22px; }
+.brand img { height: 26px; width: auto; }
+.brand--foot img { height: 22px; }
 .nav__right { display: flex; align-items: center; gap: 4px; }
 .nav__links { display: flex; list-style: none; gap: 4px; }
 .nav__links a, .nav__login { font-size: 14px; color: var(--muted); padding: 6px 12px; border-radius: 6px; transition: color .2s; }
