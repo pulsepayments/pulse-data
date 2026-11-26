@@ -10,3 +10,7 @@ The layout follows physicaldata.ai: a floating pill nav, a dark hero with a live
 - **Connect the form.** The request form's submit handler is marked `TODO` in the `<script>` block. Point it at Formspree, HubSpot, Netlify Forms or your own backend.
 - **Update brand details.** Change the company name, logo (the `#logo` symbol in the SVG sprite), email address and social links.
 - **Tune the colours.** Every colour is a CSS variable under `:root`.
+
+## Preview
+
+![Desktop hero](docs/preview-desktop.png)
