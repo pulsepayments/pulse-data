@@ -46,7 +46,7 @@ Confirmed site types and regions in the partner network:
 ## Brand Commitments
 
 - Name: Pulse Data.
-- Reference sites the founder named for layout: physicaldata.ai (primary), linear.app, lemni.com.
+- Visual direction pinned by the founder: model the site closely on linear.app and lemni.com (dark product-site layout, Inter, Lemni's centred thin headlines, glow buttons, tilted UI cards and purple gradient band). The earlier physicaldata.ai-style page and the contact-sheet redesign were both rejected.
 
 ## Evidence on Hand
 

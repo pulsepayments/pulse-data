@@ -7,18 +7,18 @@ related_targets: []
 
 # Surface: landing page (index.html)
 
-Mode: Persuade. Audience: robotics/VLA labs and industrial AI teams, equal weight. Action: request a sample (inline form). Proof: the real underground drilling frame, the partner-site regions, the install-anything capability, the ethics and cleaning process. Constraints: no invented numbers, prices, customers; layout follows physicaldata.ai's section order.
+Mode: Persuade. Audience: robotics/VLA labs and industrial AI teams, equal weight. Action: request data or a sample (form at the end). Proof: the real underground drilling frame, the four partner regions, install-any-device capability, ethics and cleaning process. Constraints: no invented numbers, prices or customers.
 
 ## Direction contract
 
-THESIS: The page is a contact sheet from a site visit: footage is the product, and labelling is the grease pencil on it. Refuses the dark-hero, gradient-headline, card-grid AI landing page.
+THESIS: A dark product site that follows linear.app and lemni.com closely, as the founder asked, with Pulse Data's own content. It refuses invented social proof (no customer logos, testimonials or stats).
 
-OWN-WORLD: Cool photographic-paper ground (not cream), black film strips with sprocket holes and amber edge print carrying real frame numbers and timecodes, yellow and red china-marker strokes as the only accents and as the label language. Archivo (condensed for display), JetBrains Mono only for timecodes and data, Permanent Marker only for hand marks.
+OWN-WORLD: Linear's near-black page, Inter 510, white pill nav button, product-UI mocks, FIG line-art columns and multi-column footer; Lemni's centred thin lavender headline, violet glow button, tilted 3D cards, dark-to-violet gradient band, light icon-row section and template cards.
 
-STORY: Visitor sees real footage from a mine, understands Pulse Data is already on sites others cannot reach, learns it installs any device ethically and delivers clean labelled data, and requests a sample.
+STORY: Visitor sees a capture session with real mining footage, understands Pulse Data reaches sites others cannot, installs any sensor, collects ethically and delivers clean labelled data, and requests data.
 
-FIRST VIEWPORT: Headline top-left over paper; a full-bleed film strip across the lower half with the drilling frame as the circled select, marks drawing on load; primary "Request a sample" button beside the headline.
+FIRST VIEWPORT: Centred thin headline with "New" pill above, lede, glow "Request data" and ghost "View sample", and the top of the product frame showing the session with the mining footage.
 
-FORM: Dailies / film contact sheet, position 3 of the ordered list (chosen as Impeccable's pick). seed:77bc45f2eb721de2
+FORM: seed: none (pinned). "use another website as direct inspiration. copy it bar for bar almost. a mix between https://www.lemni.com/ and https://linear.app/"
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance

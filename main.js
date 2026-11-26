@@ -1,14 +1,25 @@
 // Pulse Data landing page behaviour. No inline scripts, so the CSP can stay strict.
 (() => {
   'use strict';
+  const root = document.documentElement;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Hero: the grease-pencil select mark draws in once, the page's one authored motion.
-  const marks = document.getElementById('selectMarks');
-  if (marks) {
-    marks.querySelectorAll('path').forEach((p) => {
-      p.style.setProperty('--len', String(Math.ceil(p.getTotalLength()) + 2));
-    });
-    requestAnimationFrame(() => setTimeout(() => marks.classList.add('is-on'), 350));
+  // Nav gains its blurred background once the page scrolls (Linear behaviour).
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav && nav.classList.toggle('scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Blur-up reveal on scroll (Lemni behaviour). Content stays visible without JS.
+  const items = document.querySelectorAll('.rv');
+  if (!reduce && 'IntersectionObserver' in window) {
+    root.classList.add('js');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    items.forEach((el) => io.observe(el));
   }
 
   // Labelling viewer: show or hide annotations.
@@ -22,24 +33,18 @@
     });
   }
 
-  // Sample request form: client-side checks only. Server-side validation is still required
-  // once a backend is connected.
+  // Sample request form: client-side checks only. Validate again on the server once
+  // a backend is connected (see SECURITY.md).
   const form = document.getElementById('requestForm');
   const msg = document.getElementById('formMsg');
   const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-  const setMsg = (text, kind) => {
-    msg.textContent = text;
-    msg.className = 'form__msg' + (kind ? ' ' + kind : '');
-  };
+  const setMsg = (text, kind) => { msg.textContent = text; msg.className = 'form__msg' + (kind ? ' ' + kind : ''); };
 
   if (form && msg) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const data = new FormData(form);
-
-      // Honeypot: bots fill hidden fields, people don't.
-      if (String(data.get('website') || '').trim() !== '') return;
+      if (String(data.get('website') || '').trim() !== '') return; // honeypot
 
       let firstBad = null;
       form.querySelectorAll('[required]').forEach((el) => {
@@ -49,7 +54,7 @@
         if (bad && !firstBad) firstBad = el;
       });
       if (firstBad) {
-        setMsg('Please fill in your name, a valid work email, company and team.', 'err');
+        setMsg('Add your name, a valid work email, company and team.', 'err');
         firstBad.focus();
         return;
       }
@@ -57,12 +62,8 @@
       const btn = form.querySelector('button[type="submit"]');
       btn.disabled = true;
       setMsg('Sending…');
-
-      // TODO: send to your form backend over HTTPS, for example:
-      // await fetch('/api/sample-request', { method: 'POST', body: data });
-      // Then add that endpoint's origin to the CSP's connect-src or form-action.
+      // TODO: POST `data` over HTTPS to your form backend, and add its origin to the CSP.
       await new Promise((r) => setTimeout(r, 500));
-
       form.reset();
       btn.disabled = false;
       setMsg('Thanks. We will be in touch about your sample.', 'ok');

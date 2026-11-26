@@ -5,260 +5,398 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Pulse Data | Physical-world AI training data</title>
-<meta name="description" content="Pulse Data records and labels real work inside mines, foundries, packaging lines, factories and farms, installing whatever sensors your model needs, ethically and cleanly.">
-<meta name="theme-color" content="#E8E9E5">
+<title>Pulse Data | Real-world data for physical AI</title>
+<meta name="description" content="Pulse Data collects and labels data inside mines, foundries, factories and farms, installing any sensor your model needs, ethically and cleanly.">
+<meta name="theme-color" content="#08090A">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=JetBrains+Mono:wght@400;500&family=Permanent+Marker&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="styles.css">
-<link rel="preload" as="image" href="assets/mine-drill.webp">
 <script src="main.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
 <svg width="0" height="0" class="sr-only" aria-hidden="true">
-  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
-  <symbol id="i-tick" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14c2.5 1.6 4.6 4 6 7 3.4-7.6 8.2-13.2 14-17"/></symbol>
-  <symbol id="logo" viewBox="0 0 30 22" fill="none"><rect x="1" y="1" width="28" height="20" rx="1.5" stroke="currentColor" stroke-width="2"/><path d="M5 1v20M25 1v20" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 2"/><path d="M8 13h3l2-6 3 9 2-4h4" stroke="#D3382C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A78BFA"/><stop offset="1" stop-color="#5E6AD2"/></linearGradient></defs>
+  <symbol id="logo" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="url(#lg)"/><path d="M5 13h3l2-5 3 9 2-5h4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></symbol>
+  <symbol id="i-play" viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.5v11l9-5.5z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></symbol>
+  <symbol id="i-done" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#5E6AD2"/><path d="M5 8.2l2 2 4-4" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-prog" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.2" fill="none" stroke="#F2C94C" stroke-width="1.6"/><path d="M8 4a4 4 0 0 1 0 8z" fill="#F2C94C"/></symbol>
+  <symbol id="i-todo" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.2" fill="none" stroke="#8A8F98" stroke-width="1.6"/></symbol>
+  <symbol id="i-sched" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.2" fill="none" stroke="#8A8F98" stroke-width="1.6" stroke-dasharray="2.2 2"/></symbol>
+  <symbol id="i-rec" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.2" fill="none" stroke="#EB5757" stroke-width="1.6"/><circle cx="8" cy="8" r="3" fill="#EB5757"/></symbol>
+  <symbol id="i-inbox" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M2 9l2-6h8l2 6v4H2z M2 9h3.5l1 2h3l1-2H14"/></symbol>
+  <symbol id="i-video" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="1.5" y="4" width="9" height="8" rx="1.5"/><path d="M10.5 7l4-2v6l-4-2"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 14s5-4.2 5-8A5 5 0 0 0 3 6c0 3.8 5 8 5 8z"/><circle cx="8" cy="6" r="1.8"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M2 2h6l6 6-6 6-6-6z"/><circle cx="5.5" cy="5.5" r="1"/></symbol>
+  <symbol id="i-down" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8M4.5 6.5 8 10l3.5-3.5M2.5 13.5h11"/></symbol>
+  <symbol id="i-helmet" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h14M4.5 14v-2.5a5.5 5.5 0 0 1 11 0V14M8.5 6V4.5h3V6"/></symbol>
+  <symbol id="i-wrist" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="6" y="5" width="8" height="10" rx="2"/><path d="M7.5 5V2.5h5V5M7.5 15v2.5h5V15"/></symbol>
+  <symbol id="i-cam" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="2" y="5" width="12" height="10" rx="2"/><path d="M14 9l4-2v6l-4-2"/></symbol>
+  <symbol id="i-thermo" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11.5 12.2V4a1.5 1.5 0 0 0-3 0v8.2a3.2 3.2 0 1 0 3 0z"/></symbol>
+  <symbol id="i-lidar" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="10" r="1.6"/><path d="M10 3a7 7 0 0 1 7 7M10 6a4 4 0 0 1 4 4M3 10a7 7 0 0 0 7 7"/></symbol>
+  <symbol id="i-imu" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10h3l2-5 3 10 2-5h6"/></symbol>
+  <symbol id="i-chip" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="10" height="10" rx="1.5"/><path d="M8 2v3M12 2v3M8 15v3M12 15v3M2 8h3M2 12h3M15 8h3M15 12h3"/></symbol>
+  <symbol id="i-drone" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="4.5" cy="4.5" r="2.3"/><circle cx="15.5" cy="4.5" r="2.3"/><circle cx="4.5" cy="15.5" r="2.3"/><circle cx="15.5" cy="15.5" r="2.3"/><rect x="7.5" y="7.5" width="5" height="5" rx="1"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="7.5" y="2.5" width="5" height="9" rx="2.5"/><path d="M4.5 9.5a5.5 5.5 0 0 0 11 0M10 15v2.5"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></symbol>
+  <symbol id="i-mine" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M2 17l6-9 3 4 2-3 5 8z"/><path d="M13 3l4 4M15 3l-2 2"/></symbol>
+  <symbol id="i-flame" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M10 2c1 3 5 5 5 9.5a5 5 0 0 1-10 0C5 9 7 8 7 5c1.5 1 2 2 2.5 3C10 6.5 10 4 10 2z"/></symbol>
+  <symbol id="i-box" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 6.5 10 3l7 3.5v7L10 17l-7-3.5z M3 6.5 10 10l7-3.5M10 10v7"/></symbol>
+  <symbol id="i-factory" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M2 17V9l5 3V9l5 3V4h4v13z"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16C4 8 9 4 17 4c0 8-4 12-12 12z M4 16l7-7"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 30 30"><path d="M15 3 5 7v7c0 6.5 4.3 10.8 10 13 5.7-2.2 10-6.5 10-13V7z" fill="url(#lg)"/><path d="m10.5 15 3 3 6-6.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 30 30"><rect x="6" y="13" width="18" height="14" rx="3" fill="url(#lg)"/><path d="M10 13V9.5a5 5 0 0 1 10 0V13" fill="none" stroke="#A78BFA" stroke-width="2.4"/></symbol>
+  <symbol id="i-users" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="6" cy="5.5" r="2.5"/><path d="M1.5 14a4.5 4.5 0 0 1 9 0M11 3.2a2.5 2.5 0 0 1 0 4.6M12.5 14a4.5 4.5 0 0 0-1.6-3.4"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 8s2.5-5 7-5 7 5 7 5-2.5 5-7 5-7-5-7-5z"/><circle cx="8" cy="8" r="2"/></symbol>
+  <symbol id="i-file" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M9 1.5H4a1.5 1.5 0 0 0-1.5 1.5v10A1.5 1.5 0 0 0 4 14.5h8a1.5 1.5 0 0 0 1.5-1.5V6z M9 1.5V6h4.5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="6.5"/><path d="M1.5 8h13M8 1.5c2 2 2.8 4.3 2.8 6.5S10 12.5 8 14.5C6 12.5 5.2 10.2 5.2 8S6 3.5 8 1.5z"/></symbol>
 </svg>
 
-<header class="nav">
+<header class="nav" id="nav">
   <div class="wrap nav__in">
-    <a class="mark" href="#main" aria-label="Pulse Data, back to top"><svg aria-hidden="true"><use href="#logo"/></svg>PULSE DATA</a>
-    <nav aria-label="Primary">
-      <ul class="nav__links">
-        <li><a href="#access">Sites</a></li>
-        <li><a href="#install">What we install</a></li>
-        <li><a href="#ethics">Ethics &amp; quality</a></li>
-        <li><a href="#labels">Labelling</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
-    </nav>
-    <a class="btn" href="#request">Request a sample</a>
+    <a class="brand" href="#main" aria-label="Pulse Data home"><svg aria-hidden="true"><use href="#logo"/></svg>Pulse Data</a>
+    <div class="nav__right">
+      <nav aria-label="Primary">
+        <ul class="nav__links">
+          <li><a href="#collection">Collection</a></li>
+          <li><a href="#network">Network</a></li>
+          <li><a href="#labelling">Labelling</a></li>
+          <li><a href="#ethics">Ethics</a></li>
+          <li><a href="#use-cases">Use cases</a></li>
+        </ul>
+      </nav>
+      <span class="nav__sep" aria-hidden="true"></span>
+      <a class="nav__login" href="#request">Get a sample</a>
+      <a class="btn btn-white" href="#request">Request data</a>
+    </div>
   </div>
 </header>
 
 <main id="main">
 
-  <!-- Hero -->
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="wrap hero__grid">
-      <h1 id="hero-title">Training data from places <em>no one else</em> can film.</h1>
-      <div class="hero__side">
-        <p class="lede">Pulse Data records and labels real work inside mines, foundries, packaging lines, factories and farms run by our family-office partners. Tell us what your model needs to see, and we install the sensors to capture it.</p>
-        <div class="hero__actions">
-          <a class="btn" href="#request">Request a sample <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <a class="btn btn--line" href="#install">See what we install</a>
+<!-- HERO: Lemni centred headline over a Linear product frame -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__ghost" aria-hidden="true"><div>Helmet cam · underground drilling<span>Thermal · furnace tapping · casting line</span>Line cam · carton folding<span>Drone · harvest operations · field rows</span></div></div>
+  <div class="wrap hero__in">
+    <a class="hero__new rv" href="#labelling"><b>New</b>Sample reel from an underground mine <svg width="12" height="12" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <h1 id="hero-title" class="h-xl rv">Real-world data for physical AI</h1>
+    <p class="p-lg rv">Pulse Data collects and labels data inside mines, foundries, factories and farms through family-owned operators, installing whatever sensors your model needs, ethically and cleanly.</p>
+    <div class="hero__cta rv">
+      <a class="btn btn-glow" href="#request">Request data <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-ghost" href="#labelling">View sample <svg aria-hidden="true"><use href="#i-play"/></svg></a>
+    </div>
+  </div>
+
+  <div class="stage rv" aria-label="Illustrative view of a capture session">
+    <div class="app">
+      <aside class="app__side" aria-hidden="true">
+        <div class="ws"><i></i>Pulse Data</div>
+        <div class="nav-i"><svg><use href="#i-inbox"/></svg>Inbox</div>
+        <div class="nav-i on"><svg><use href="#i-video"/></svg>Sessions</div>
+        <div class="nav-i"><svg><use href="#i-pin"/></svg>Sites</div>
+        <div class="nav-i"><svg><use href="#i-tag"/></svg>Labels</div>
+        <div class="nav-i"><svg><use href="#i-down"/></svg>Exports</div>
+        <div class="side-h">Network</div>
+        <div class="nav-i"><span class="dot d1"></span>Africa · Mines</div>
+        <div class="nav-i"><span class="dot d2"></span>Africa · Foundries</div>
+        <div class="nav-i"><span class="dot d3"></span>India · Packaging</div>
+        <div class="nav-i"><span class="dot d4"></span>Asia · Manufacturing</div>
+        <div class="nav-i"><span class="dot d5"></span>Russia · Farms</div>
+      </aside>
+      <div class="app__main">
+        <div class="app__bar">
+          <div class="crumb"><svg width="14" height="14" aria-hidden="true"><use href="#i-rec"/></svg><b class="tnum">AF-MINE-014</b><span>Underground drilling</span></div>
+          <span class="pill">Recording</span>
         </div>
-      </div>
-    </div>
-
-    <div class="strip" aria-label="Sample footage contact sheet">
-      <div class="strip__edge" aria-hidden="true"><span>PULSE DATA · SAMPLE REEL · HELMET CAM</span><span>UNDERGROUND DRILLING</span><span class="tnum">25.11.2026</span></div>
-      <div class="strip__roll" tabindex="0" aria-label="Frames from the sample clip, scroll sideways">
-        <figure class="frame frame--a"><div class="frame__img"><img src="assets/mine-drill.webp" alt="" width="1672" height="941"></div><figcaption><b class="tnum">0412</b><span class="tnum">08:42:15:08</span></figcaption></figure>
-        <figure class="frame frame--b"><div class="frame__img"><img src="assets/mine-drill.webp" alt="" width="1672" height="941"></div><figcaption><b class="tnum">0413</b><span class="tnum">08:42:16:02</span></figcaption></figure>
-        <figure class="frame frame--c frame--select">
-          <div class="frame__img"><img src="assets/mine-drill.webp" alt="Helmet-camera view of a miner in hi-vis sleeves and gloves drilling into a wet underground rock face with a hand-held rock drill" width="1672" height="941"></div>
-          <svg class="marks draw" id="selectMarks" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M9 9 C 32 2, 76 1, 95 8 C 99.5 20, 99 44, 94 55 C 70 59.5, 28 59.5, 6 55 C 1 42, 1.5 20, 11 7 L 20 4"/>
-            <path class="red" d="M84 4 L 88.5 9 L 98 -3"/>
-          </svg>
-          <figcaption><b class="tnum">0414</b><span class="hand select-note">select · drill, 2 hands, rock face</span><span class="tnum">08:42:17:00</span></figcaption>
-        </figure>
-        <figure class="frame frame--d"><div class="frame__img"><img src="assets/mine-drill.webp" alt="" width="1672" height="941"></div><figcaption><b class="tnum">0415</b><span class="tnum">08:42:17:21</span></figcaption></figure>
-        <figure class="frame frame--e"><div class="frame__img"><img src="assets/mine-drill.webp" alt="" width="1672" height="941"></div><figcaption><b class="tnum">0416</b><span class="tnum">08:42:18:14</span></figcaption></figure>
-      </div>
-      <p class="strip__note">Sample frames from an underground drilling session, recorded on a helmet camera.</p>
-    </div>
-  </section>
-
-  <!-- Access -->
-  <section class="sec" id="access" aria-labelledby="access-title">
-    <div class="wrap">
-      <div class="sec__head">
-        <h2 id="access-title">Already inside the gate.</h2>
-        <p class="lede">Our partners are family offices that own operating companies in places that are hard to reach and harder to film. These businesses already supply large international clients, so their floors run real shifts, and their owners can say yes to recording.</p>
-      </div>
-      <table class="register">
-        <caption class="sr-only">Partner sites by region</caption>
-        <thead><tr><th scope="col">Region</th><th scope="col">Sites</th><th scope="col">What we can record</th></tr></thead>
-        <tbody>
-          <tr><td>Africa</td><td>Mines and foundries</td><td>Underground and surface work, drilling, haulage, smelting and casting.</td></tr>
-          <tr><td>India</td><td>Packaging businesses</td><td>Line operation, folding and packing, quality checks, palletising.</td></tr>
-          <tr><td>Asia</td><td>Manufacturing businesses</td><td>Assembly, machine tending, inspection and hand-level manipulation.</td></tr>
-          <tr><td>Russia</td><td>Farms</td><td>Field operations, machinery, livestock and grain handling through the seasons.</td></tr>
-        </tbody>
-      </table>
-      <p class="aside-note">Need a different kind of site? <a href="#request">Ask us</a> and we'll check the network.</p>
-    </div>
-  </section>
-
-  <!-- Install -->
-  <section class="sec sec--film" id="install" aria-labelledby="install-title">
-    <div class="wrap">
-      <div class="sec__head">
-        <h2 id="install-title">Name the sensor. We'll mount it.</h2>
-        <p class="lede">Because we work through the owners, we can put collection hardware where outside vendors are rarely allowed: on helmets, machines, vehicles and production lines. Every install is approved by the site and fitted around the work, not in its way.</p>
-      </div>
-      <div class="install">
-        <div><h3>Worn</h3><ul><li>Helmet and chest cameras</li><li>Wrist cameras</li><li>Motion sensors (IMU)</li><li>Eye tracking</li><li>Audio</li></ul></div>
-        <div><h3>Fixed</h3><ul><li>Overview cameras</li><li>Thermal cameras</li><li>Depth cameras</li><li>LiDAR scans</li></ul></div>
-        <div><h3>Machine</h3><ul><li>PLC and telemetry</li><li>Vibration</li><li>Acoustics</li><li>Power draw</li></ul></div>
-        <div><h3>Mobile</h3><ul><li>Vehicle cameras</li><li>Drones</li><li>GPS</li><li>Multispectral</li></ul></div>
-        <div class="yours"><h3>Yours</h3><ul><li>Send us your rig. We install it, run it and send back the data.</li></ul></div>
-      </div>
-      <ol class="process">
-        <li><b>Agree with the owner</b>We scope the work with the site's owner and safety lead before anything is mounted.</li>
-        <li><b>Install and test</b>Field crews fit and calibrate the devices, then run test recordings against your spec.</li>
-        <li><b>Record real shifts</b>Capture runs during normal work, with daily checks so problems are fixed on site, not in your pipeline.</li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- Ethics & quality -->
-  <section class="sec" id="ethics" aria-labelledby="ethics-title">
-    <div class="wrap">
-      <div class="sec__head">
-        <h2 id="ethics-title">Consented first. Clean on delivery.</h2>
-        <p class="lede">Data you can't defend is data you can't use. Every capture is agreed with the people in it, and every file is checked before it reaches you.</p>
-      </div>
-      <div class="slip">
-        <div>
-          <h3>Ethical collection</h3>
-          <p class="sub">Agreed before recording, not after.</p>
-          <ul class="checks">
-            <li><svg aria-hidden="true"><use href="#i-tick"/></svg><div><b>Owner sign-off</b><span>The site owner approves what is recorded, where and when.</span></div></li>
-            <li><svg aria-hidden="true"><use href="#i-tick"/></svg><div><b>Individual consent</b><span>Everyone on camera agrees in their own language and can opt out.</span></div></li>
-            <li><svg aria-hidden="true"><use href="#i-tick"/></svg><div><b>Nothing hidden</b><span>Devices are visible, and everyone on site knows when recording is on.</span></div></li>
-            <li><svg aria-hidden="true"><use href="#i-tick"/></svg><div><b>Privacy on request</b><span>Faces, names and site details blurred or generalised before delivery.</span></div></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Clean data</h3>
-          <p class="sub">Checked before it leaves us.</p>
-          <ul class="checks">
-            <li><svg aria-hidden="true"><use href="#i-tick"/></svg><div><b>Synced</b><span>Every stream aligned to one clock, with any drift reported.</span></div></li>
-            <li><svg aria-hidden="true"><use href="#i-tick"/></svg><div><b>Checked</b><span>Each session reviewed for dropped frames, sensor faults and unusable footage.</span></div></li>
-            <li><svg aria-hidden="true"><use href="#i-tick"/></svg><div><b>Filtered</b><span>Out-of-spec recordings are removed, not passed on.</span></div></li>
-            <li><svg aria-hidden="true"><use href="#i-tick"/></svg><div><b>Documented</b><span>Every file carries its site type, device, date and consent record.</span></div></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Labelling -->
-  <section class="sec sec--alt" id="labels" aria-labelledby="labels-title">
-    <div class="wrap">
-      <div class="sec__head">
-        <h2 id="labels-title">Labelled by people who know the work.</h2>
-        <p class="lede">Annotators are briefed on each process by the people who run it, so a rock drill is labelled as a rock drill, not "tool 3".</p>
-      </div>
-      <div class="label-grid">
-        <figure>
-          <div class="viewer" id="viewer" data-labels="on">
-            <div class="viewer__img">
-              <img src="assets/mine-drill.webp" alt="Underground drilling frame with labels for the rock drill, both gloved hands, the drill bit's contact point and the wet rock face" width="1672" height="941" loading="lazy">
-              <svg class="ann" viewBox="0 0 1672 941" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-                <g>
-                  <polygon class="w" points="0,0 880,0 760,170 590,290 470,520 300,720 0,820"/>
-                  <text class="y" x="70" y="150">wet rock face</text>
-                </g>
-                <g>
-                  <rect class="y" x="660" y="335" width="460" height="365" rx="6"/>
-                  <text class="y" x="828" y="322">rock drill</text>
-                </g>
-                <g>
-                  <rect class="y" x="525" y="470" width="245" height="225" rx="6"/>
-                  <text class="y" x="530" y="458">L hand</text>
-                  <rect class="y" x="1110" y="450" width="320" height="265" rx="6"/>
-                  <text class="y" x="1300" y="436">R hand</text>
-                </g>
-                <g>
-                  <path class="r" d="M612 296 L 735 380"/>
-                  <circle class="pt" cx="612" cy="296" r="11"/>
-                  <text class="r" x="640" y="270">bit contact</text>
-                </g>
-                <g>
-                  <path class="y" d="M1000 712 C 1015 800, 1030 870, 1040 941 M1095 700 C 1120 790, 1140 870, 1150 941"/>
-                  <text class="y" x="1170" y="800">air + water lines</text>
-                </g>
-              </svg>
-            </div>
-            <div class="viewer__bar">
-              <span class="tnum">frame 0414 · 08:42:17:00 · action: drilling</span>
-              <button class="toggle" id="labelToggle" type="button" aria-pressed="true" aria-controls="viewer"><i aria-hidden="true"></i>Labels</button>
+        <div class="app__body">
+          <div class="doc">
+            <p class="doc__t">Underground drilling, helmet cam</p>
+            <p class="p">Egocentric capture of hand-held rock drilling. Helmet camera, wrist IMU and audio, synced to one clock.</p>
+            <div class="video"><img src="assets/mine-drill.webp" alt="Helmet-camera view of a miner in hi-vis sleeves and gloves drilling into a wet underground rock face" width="1672" height="941"><span class="rec tnum">REC 08:42:17</span></div>
+            <div class="act">
+              <p class="act__t">Activity</p>
+              <ul>
+                <li><svg><use href="#i-done"/></svg><span><b>Site owner</b> approved recording on this level</span></li>
+                <li><svg><use href="#i-done"/></svg><span><b>Operators</b> signed individual consent</span></li>
+                <li><svg><use href="#i-done"/></svg><span><b>Field team</b> installed helmet cam and wrist IMU</span></li>
+                <li><svg><use href="#i-prog"/></svg><span><b>QA</b> checking sync and dropped frames</span></li>
+              </ul>
             </div>
           </div>
-          <figcaption class="legend"><span class="y">objects and regions</span><span class="r">contact points</span></figcaption>
-        </figure>
-        <ul class="types">
-          <li><b>Objects and tracks</b><span>Boxes and IDs that follow tools, people and materials across frames.</span></li>
-          <li><b>Hands and contact</b><span>Hand keypoints and tool contact points for manipulation learning.</span></li>
-          <li><b>Regions</b><span>Masks for rock faces, product, spills and defects.</span></li>
-          <li><b>Actions and steps</b><span>Timed segments that follow the real procedure from start to finish.</span></li>
-          <li><b>Descriptions</b><span>Plain-language captions and Q&amp;A for vision-language models.</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Audiences -->
-  <section class="sec" aria-labelledby="who-title">
-    <div class="wrap">
-      <div class="sec__head">
-        <h2 id="who-title">Built for two kinds of team.</h2>
-        <p class="lede">One network, recorded for different models.</p>
-      </div>
-      <div class="duo">
-        <div>
-          <h3>Robotics and world-model labs</h3>
-          <p>Real manipulation and egocentric data from heavy work, not lab benches.</p>
-          <ul>
-            <li>Helmet and wrist views of skilled hands using real tools</li>
-            <li>Motion and force sensors fitted where your model needs them</li>
-            <li>Long, continuous sessions from real shifts</li>
-          </ul>
+          <dl class="props">
+            <dt>Status</dt><dd><svg width="14" height="14"><use href="#i-rec"/></svg>Recording</dd>
+            <dt>Site</dt><dd>Africa · Mine</dd>
+            <dt>Sensors</dt><dd>Helmet cam, IMU, audio</dd>
+            <dt>Consent</dt><dd><svg width="14" height="14"><use href="#i-done"/></svg>Signed</dd>
+            <dt>Labels</dt><dd><svg width="14" height="14"><use href="#i-todo"/></svg>Queued</dd>
+            <dt>Export</dt><dd>COCO, JSONL</dd>
+          </dl>
         </div>
-        <div>
-          <h3>Industrial AI and vision teams</h3>
-          <p>Footage from working production floors, labelled for the jobs your models do.</p>
-          <ul>
-            <li>Safety, PPE and process monitoring footage</li>
-            <li>Inspection and defect data from live lines</li>
-            <li>Machine signals recorded alongside the video</li>
+        <div class="chat" aria-hidden="true">
+          <div class="chat__top"><span><svg width="16" height="16"><use href="#logo"/></svg>Pulse</span><span>— ×</span></div>
+          <p class="chat__msg">Label the drill, both hands and the bit contact point. Export as COCO.</p>
+          <p class="chat__ctx">AF-MINE-014 added to context</p>
+          <ul class="chat__out">
+            <li><svg><use href="#i-check"/></svg>Labelling task created</li>
+            <li><svg><use href="#i-check"/></svg>Assigned to mining-trained annotators</li>
+            <li><svg><use href="#i-check"/></svg>Export set to COCO + JSONL</li>
           </ul>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FAQ -->
-  <section class="sec sec--alt" id="faq" aria-labelledby="faq-title">
-    <div class="wrap">
-      <div class="sec__head"><h2 id="faq-title">Questions buyers ask.</h2></div>
-      <div class="faq">
-        <details><summary>How do you get access to these sites?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Our partners are family offices that own the businesses. Access is agreed with the owners, and we work alongside each site's own management and safety teams.</p></details>
-        <details><summary>Can you install our own hardware?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Yes. Send us the rig or the spec, and we handle mounting, power, calibration and day-to-day operation on site.</p></details>
-        <details><summary>How do you make sure collection is ethical?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Owner sign-off, individual consent from everyone recorded, visible devices, and de-identification on request. The consent record travels with the data.</p></details>
-        <details><summary>What do you mean by clean data?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Streams synced to one clock, every session checked for dropped frames and sensor faults, unusable recordings removed, and each file documented with its source and consent.</p></details>
-        <details><summary>Which formats do you deliver?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Tell us your schema and file formats, and we deliver to match your pipeline.</p></details>
-        <details><summary>Can we see data before we commit?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Yes. <a href="#request">Request a sample</a> and we'll send footage and labels to review.</p></details>
+<!-- Linear logo row, as industries -->
+<section class="logos" aria-label="Industries we collect in">
+  <div class="wrap">
+    <div class="logos__row">
+      <span><svg aria-hidden="true"><use href="#i-mine"/></svg>Mining</span>
+      <span><svg aria-hidden="true"><use href="#i-flame"/></svg>Foundries</span>
+      <span><svg aria-hidden="true"><use href="#i-box"/></svg>Packaging</span>
+      <span><svg aria-hidden="true"><use href="#i-factory"/></svg>Manufacturing</span>
+      <span><svg aria-hidden="true"><use href="#i-leaf"/></svg>Agriculture</span>
+    </div>
+    <p class="fig">Collecting across Africa, India, Asia and Russia</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <p class="statement rv">A new kind of data partner. <span>Pulse Data works through the owners of real industrial businesses, so your models learn from real shifts, real tools and real conditions, not staged footage.</span></p>
+
+  <!-- Linear FIG 0.1 / 0.2 / 0.3 -->
+  <div class="figs">
+    <div class="rv"><p class="fig">Fig 0.1</p><svg viewBox="0 0 320 300" aria-hidden="true"><polygon points="160.0,166.0 263.9,226.0 160.0,286.0 56.1,226.0" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><path d="M56.1 226.0 v8 L 160.0 294.0 L 263.9 234.0 V 226.0" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><polygon points="160.0,150.0 263.9,210.0 160.0,270.0 56.1,210.0" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><path d="M56.1 210.0 v8 L 160.0 278.0 L 263.9 218.0 V 210.0" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><polygon points="160.0,134.0 263.9,194.0 160.0,254.0 56.1,194.0" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><path d="M56.1 194.0 v8 L 160.0 262.0 L 263.9 202.0 V 194.0" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><polygon points="160.0,118.0 263.9,178.0 160.0,238.0 56.1,178.0" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><path d="M56.1 178.0 v8 L 160.0 246.0 L 263.9 186.0 V 178.0" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><polygon points="160.0,102.0 263.9,162.0 160.0,222.0 56.1,162.0" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><path d="M56.1 162.0 v8 L 160.0 230.0 L 263.9 170.0 V 162.0" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><polygon points="160.0,86.0 263.9,146.0 160.0,206.0 56.1,146.0" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><path d="M56.1 146.0 v8 L 160.0 214.0 L 263.9 154.0 V 146.0" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><polygon points="160.0,60.0 263.9,120.0 160.0,180.0 56.1,120.0" stroke="#5A5E66" stroke-width="1" fill="#08090A"/><path d="M140 120 L160 70 L180 120 M148 100 H172 M160 70 V60 M152 60 H168" stroke="#5A5E66" stroke-width="1" fill="none"/><ellipse cx="160" cy="70" rx="6" ry="3" stroke="#5A5E66" stroke-width="1" fill="none"/></svg><h2 class="fig__t">Direct site access</h2><p>Family offices own the sites, so access is agreed at the top, not negotiated at the gate.</p></div>
+    <div class="rv"><p class="fig">Fig 0.2</p><svg viewBox="0 0 320 300" aria-hidden="true"><polygon points="160.0,40.0 220.6,75.0 160.0,110.0 99.4,75.0" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><path d="M99.4 75.0 V135.0 L160.0 170.0 L220.6 135.0 V75.0 M160.0 110.0 V170.0" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><polygon points="100.0,95.0 160.6,130.0 100.0,165.0 39.4,130.0" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><path d="M39.4 130.0 V190.0 L100.0 225.0 L160.6 190.0 V130.0 M100.0 165.0 V225.0" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><polygon points="220.0,95.0 280.6,130.0 220.0,165.0 159.4,130.0" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><path d="M159.4 130.0 V190.0 L220.0 225.0 L280.6 190.0 V130.0 M220.0 165.0 V225.0" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><polygon points="160.0,150.0 220.6,185.0 160.0,220.0 99.4,185.0" stroke="#5A5E66" stroke-width="1" fill="#08090A"/><path d="M99.4 185.0 V245.0 L160.0 280.0 L220.6 245.0 V185.0 M160.0 220.0 V280.0" stroke="#5A5E66" stroke-width="1" fill="#08090A"/><ellipse cx="160" cy="185" rx="14" ry="8" stroke="#5A5E66" stroke-width="1" fill="none"/><ellipse cx="160" cy="185" rx="6" ry="3.5" stroke="#5A5E66" stroke-width="1" fill="none"/><path d="M100 120 l10 5 M95 123 l10 5 M220 118 a8 5 0 1 0 0.1 0" stroke="#3A3D44" stroke-width="1" fill="none"/></svg><h2 class="fig__t">Any sensor, installed</h2><p>Cameras, thermal, LiDAR, machine signals or your own rig, mounted and run by our field teams.</p></div>
+    <div class="rv"><p class="fig">Fig 0.3</p><svg viewBox="0 0 320 300" aria-hidden="true"><path d="M110 70 L170 105 V255 L110 220 Z" stroke="#5A5E66" stroke-width="1" fill="#08090A"/><path d="M122 77 L182 112 V253 L122 218 Z" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><path d="M134 84 L194 119 V251 L134 216 Z" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><path d="M146 91 L206 126 V249 L146 214 Z" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><path d="M158 98 L218 133 V247 L158 212 Z" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><path d="M170 105 L230 140 V245 L170 210 Z" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><path d="M182 112 L242 147 V243 L182 208 Z" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><path d="M194 119 L254 154 V241 L194 206 Z" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><path d="M206 126 L266 161 V239 L206 204 Z" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><path d="M218 133 L278 168 V237 L218 202 Z" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><path d="M230 140 L290 175 V235 L230 200 Z" stroke="#3A3D44" stroke-width="1" fill="#08090A"/><path d="M242 147 L302 182 V233 L242 198 Z" stroke="#3A3D44" stroke-width="1" fill="#08090A"/></svg><h2 class="fig__t">Clean by default</h2><p>Consented, synced, checked and documented before a single file reaches you.</p></div>
+  </div>
+</div>
+
+<!-- Linear feature section: Collection -->
+<section class="sec" id="collection" aria-labelledby="col-title">
+  <div class="wrap">
+    <div class="split-head rv">
+      <h2 id="col-title" class="h-lg">Collection</h2>
+      <div><p class="p-lg">Scope a dataset in a single thread. We turn it into sessions on real sites, from install to delivery.</p><a class="more" href="#request">Request data <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+    </div>
+    <div class="board rv" aria-label="Illustrative collection board">
+      <div class="thread">
+        <div class="thread__h"><b>Thread</b><span>#robotics-data</span></div>
+        <div class="msg"><span class="av a1">YO</span><div><b>You</b><small>9:12 AM</small><p>We need egocentric data of skilled hands on heavy tools. Both hands and tool contact.</p></div></div>
+        <div class="msg"><span class="av a2">FL</span><div><b>Field lead</b><small>9:20 AM</small><p>We can run that at a mine and a foundry in Africa. Helmet cams plus wrist IMUs, owner sign-off in place.</p></div></div>
+        <div class="msg"><span class="av a3">QA</span><div><b>Data QA</b><small>9:24 AM</small><p>We'll sync to one clock and deliver COCO with hand keypoints.</p></div></div>
+        <div class="compose"><em>@Pulse</em> create sessions for both sites</div>
+      </div>
+      <div class="cols">
+        <div>
+          <div class="col__h"><svg><use href="#i-sched"/></svg>Scheduled</div>
+          <div class="card"><small>RU-FARM-002</small><p>Harvest operations</p><div class="tags"><span class="tag">Drone</span><span class="tag">Vehicle cam</span></div></div>
+          <div class="card"><small>AS-MFG-007</small><p>Bench assembly, hands</p><div class="tags"><span class="tag">Wrist cam</span><span class="tag">Egocentric</span></div></div>
+        </div>
+        <div>
+          <div class="col__h"><svg><use href="#i-prog"/></svg>Installing</div>
+          <div class="card"><small>AF-FDRY-003</small><p>Casting pour</p><div class="tags"><span class="tag">Thermal</span><span class="tag">Fixed cam</span></div></div>
+        </div>
+        <div>
+          <div class="col__h"><svg><use href="#i-rec"/></svg>Recording</div>
+          <div class="card"><small>AF-MINE-014</small><p>Underground drilling</p><div class="tags"><span class="tag">Helmet cam</span><span class="tag">IMU</span></div></div>
+          <div class="card"><small>IN-PACK-011</small><p>Carton folding line</p><div class="tags"><span class="tag">Line cam</span><span class="tag">Hands</span></div></div>
+        </div>
+        <div>
+          <div class="col__h"><svg><use href="#i-done"/></svg>Delivered</div>
+          <div class="card"><small>IN-PACK-004</small><p>Palletising</p><div class="tags"><span class="tag">COCO</span><span class="tag">QA passed</span></div></div>
+        </div>
       </div>
     </div>
-  </section>
+    <div class="feat-list rv">
+      <span>Features</span>
+      <ul><li>Site matching</li><li>Device install</li><li>Field operations</li></ul>
+      <ul><li>Daily QA</li><li>Rolling delivery</li><li>Your formats</li></ul>
+    </div>
+  </div>
+</section>
 
-  <!-- Request -->
-  <section class="sec sec--film" id="request" aria-labelledby="request-title">
-    <div class="wrap request">
-      <div>
-        <h2 id="request-title">Ask for a sample reel.</h2>
-        <p class="lede">Tell us what your model needs to see. We'll reply with a sample and the sites that can produce it.</p>
+<!-- Lemni dark: tilted cards -->
+<section class="lemni" id="network" aria-label="Installation and capture">
+  <div class="wrap tilt-sec">
+    <div class="rv">
+      <h2 class="h-two">Install any device, <span>on sites outside vendors never reach</span></h2>
+      <div class="tilt" aria-hidden="true">
+        <div class="tilt__in">
+          <div class="tcard"><small>Helmet camera × 6</small><div class="row">Underground level, drilling crew<span class="st">Installed</span></div></div>
+          <div class="tcard"><small>Thermal camera</small><div class="row">Furnace line, foundry<span class="st wait">Awaiting sign-off</span></div></div>
+          <div class="tcard"><small>PLC tap</small><div class="row">Conveyor 2, packaging<span class="st cal">Calibrating</span></div></div>
+          <div class="tcard"><small>Your rig</small><div class="row">Wrist force sensors<span class="st">Installed</span></div></div>
+        </div>
+        <span class="tnote">Approved by the site safety officer</span>
       </div>
+    </div>
+    <div class="rv">
+      <h2 class="h-two">Record real shifts, <span>not staged demos in a lab</span></h2>
+      <div class="wave" aria-hidden="true">
+        <div class="wave__h"><span>Helmet IMU · underground drilling</span><span class="tnum">08:42:17</span></div>
+        <svg viewBox="0 0 400 70" preserveAspectRatio="none"><path d="M0 35 C 20 10, 35 60, 55 35 S 90 15, 110 35 S 140 62, 160 30 S 190 8, 215 38 S 245 64, 270 34 S 300 12, 325 36 S 360 58, 380 32 L 400 34" fill="none" stroke="#A78BFA" stroke-width="2"/><path d="M0 40 C 25 30, 45 50, 70 40 S 115 28, 140 42 S 185 52, 210 40 S 255 28, 280 42 S 330 50, 355 40 L 400 41" fill="none" stroke="#3E3F56" stroke-width="1.5"/></svg>
+        <div class="wave__f"><span>Camera, IMU and audio on one clock</span><b>Synced</b></div>
+      </div>
+      <p class="p mt">Capture runs during normal work, with daily checks so problems are fixed on site, not in your pipeline.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Lemni purple band -->
+<section class="band" aria-labelledby="band-title">
+  <div class="wrap band__in">
+    <h2 id="band-title" class="h-md rv">AI deserves more than lab benches and stock footage</h2>
+    <p class="rv">Robots and industrial models are trained on kitchens, labs and staged demos, then deployed into mines, foundries and factories. <b>It's time to train on the real world.</b></p>
+  </div>
+</section>
+
+<!-- Lemni light: new approach -->
+<section class="light" aria-labelledby="approach-title">
+  <div class="wrap center rv">
+    <h2 id="approach-title" class="h-md">A new approach to physical-world data</h2>
+    <p class="p">We work through family offices that own operating companies serving major clients. You choose the task and the sensors. We handle access, consent, installation, capture and labelling.</p>
+    <div class="icons">
+      <span><i><svg aria-hidden="true"><use href="#i-helmet"/></svg></i>Helmet cam</span>
+      <span><i><svg aria-hidden="true"><use href="#i-wrist"/></svg></i>Wrist cam</span>
+      <span><i><svg aria-hidden="true"><use href="#i-cam"/></svg></i>Fixed cam</span>
+      <span><i><svg aria-hidden="true"><use href="#i-thermo"/></svg></i>Thermal</span>
+      <span><i><svg aria-hidden="true"><use href="#i-lidar"/></svg></i>LiDAR</span>
+      <span><i><svg aria-hidden="true"><use href="#i-imu"/></svg></i>IMU</span>
+      <span><i><svg aria-hidden="true"><use href="#i-chip"/></svg></i>Machine data</span>
+      <span><i><svg aria-hidden="true"><use href="#i-drone"/></svg></i>Drone</span>
+      <span><i><svg aria-hidden="true"><use href="#i-mic"/></svg></i>Audio</span>
+      <span class="soon"><i><svg aria-hidden="true"><use href="#i-plus"/></svg></i>Your rig</span>
+    </div>
+  </div>
+  <div class="lshot" aria-hidden="true">
+    <div class="lshot__in">
+      <div class="lshot__side"><div>Pulse Data</div><small>Workspace</small><div>Sessions</div><div class="on">Labels</div><div>Exports</div><small>Sites</small><div>Mines</div><div>Foundries</div><div>Packaging</div><div>Manufacturing</div><div>Farms</div></div>
+      <div class="lshot__img"><img src="assets/mine-drill.webp" alt="" width="1672" height="941" loading="lazy"></div>
+      <div class="lshot__list"><b>Labels</b><div>Rock drill · box</div><div>Left hand · keypoints</div><div>Right hand · keypoints</div><div>Bit contact · point</div><div>Rock face · mask</div><div>Action · drilling</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Lemni light duo -->
+<section class="light2" id="ethics" aria-label="Ethics and data quality">
+  <div class="wrap">
+    <div class="duo">
+      <div class="rv">
+        <h3>Ethical by design</h3>
+        <p>Every recording is agreed with the site owner and with each person on camera, in their own language. Devices are visible and anyone can opt out.</p>
+        <div class="minis"><span><svg aria-hidden="true"><use href="#i-check"/></svg>Owner sign-off</span><span><svg aria-hidden="true"><use href="#i-users"/></svg>Individual consent</span><span><svg aria-hidden="true"><use href="#i-eye"/></svg>Blurring on request</span></div>
+      </div>
+      <div class="rv">
+        <h3>Clean by default</h3>
+        <p>Streams are synced to one clock, checked for dropped frames and sensor faults, filtered for unusable footage and documented file by file.</p>
+        <div class="minis"><span><svg aria-hidden="true"><use href="#i-clock"/></svg>Synced streams</span><span><svg aria-hidden="true"><use href="#i-check"/></svg>QA on every session</span><span><svg aria-hidden="true"><use href="#i-file"/></svg>Full provenance</span></div>
+      </div>
+    </div>
+    <div class="notes rv">
+      <div><svg aria-hidden="true"><use href="#i-globe"/></svg><span><b>Mines and foundries</b> across Africa</span></div>
+      <div><svg aria-hidden="true"><use href="#i-globe"/></svg><span><b>Packaging</b> in India and <b>manufacturing</b> across Asia</span></div>
+      <div><svg aria-hidden="true"><use href="#i-globe"/></svg><span><b>Farms</b> in Russia, through the seasons</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Linear feature: labelling review -->
+<section class="sec" id="labelling" aria-labelledby="lab-title">
+  <div class="wrap">
+    <div class="split-head rv">
+      <h2 id="lab-title" class="h-lg">Label, review<br>and deliver</h2>
+      <div><p class="p-lg">Annotators briefed by the people who run each process label your data. A second reviewer checks every task before export.</p><a class="more" href="#request">Get a labelled sample <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+    </div>
+    <div class="review rv">
+      <div class="queue" aria-hidden="true">
+        <div class="qh"><svg><use href="#i-done"/></svg>In review <small>3</small></div>
+        <div class="q on"><small>LBL-2041</small><svg><use href="#i-done"/></svg>Drill and both hands</div>
+        <div class="q"><small>LBL-2038</small><svg><use href="#i-done"/></svg>Bit contact points</div>
+        <div class="q"><small>LBL-2032</small><svg><use href="#i-done"/></svg>Rock face mask</div>
+        <div class="qh"><svg><use href="#i-prog"/></svg>In progress <small>2</small></div>
+        <div class="q"><small>LBL-2027</small><svg><use href="#i-prog"/></svg>Carton folding steps</div>
+        <div class="q"><small>LBL-2019</small><svg><use href="#i-prog"/></svg>PPE on the line</div>
+        <div class="qh"><svg><use href="#i-todo"/></svg>Todo <small>2</small></div>
+        <div class="q"><small>LBL-2014</small><svg><use href="#i-todo"/></svg>Harvest actions</div>
+        <div class="q"><small>LBL-2010</small><svg><use href="#i-todo"/></svg>Casting pour regions</div>
+      </div>
+      <figure class="viewer" id="viewer" data-labels="on">
+        <div class="viewer__bar"><span class="tnum">AF-MINE-014 / frame 0414<span class="hide-sm"> · action: drilling</span></span><button class="switch" id="labelToggle" type="button" aria-pressed="true" aria-controls="viewer"><i aria-hidden="true"></i>Labels</button></div>
+        <div class="viewer__img">
+          <img src="assets/mine-drill.webp" alt="Underground drilling frame labelled with the rock drill, both gloved hands, the bit contact point and the wet rock face" width="1672" height="941" loading="lazy">
+          <svg class="ann" viewBox="0 0 1672 941" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <g><polygon class="w" points="0,0 880,0 760,170 590,290 470,520 300,720 0,820"/><rect class="lb w" x="60" y="120" width="220" height="40" rx="6"/><text x="74" y="149">Rock face</text></g>
+            <g><rect class="b" x="660" y="335" width="460" height="365" rx="8"/><rect class="lb b" x="660" y="291" width="170" height="40" rx="6"/><text x="674" y="320">Rock drill</text></g>
+            <g><rect class="g" x="525" y="470" width="245" height="225" rx="8"/><rect class="lb g" x="525" y="426" width="130" height="40" rx="6"/><text x="539" y="455">L hand</text>
+               <rect class="g" x="1110" y="450" width="320" height="265" rx="8"/><rect class="lb g" x="1300" y="406" width="130" height="40" rx="6"/><text x="1314" y="435">R hand</text></g>
+            <g><path class="r" d="M612 296 L 735 380"/><circle cx="612" cy="296" r="10"/><rect class="lb r" x="634" y="228" width="190" height="40" rx="6"/><text x="648" y="257">Bit contact</text></g>
+          </svg>
+        </div>
+        <figcaption class="viewer__bar"><span>4 objects · 2 hands · 1 contact point</span><span>Reviewer: approved</span></figcaption>
+      </figure>
+    </div>
+    <div class="feat-list rv">
+      <span>Label types</span>
+      <ul><li>Objects and tracks</li><li>Hands and contact points</li><li>Regions and masks</li></ul>
+      <ul><li>Actions and steps</li><li>Captions and Q&amp;A</li><li>Your own schema</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- Lemni dark purple pair -->
+<section class="pair" aria-label="Consent and security">
+  <div class="wrap pair__in">
+    <div class="rv">
+      <svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg>
+      <h3>Consent first</h3>
+      <p>No recording starts until the owner and every person on camera have agreed. The consent record travels with the data.</p>
+      <ul><li><svg><use href="#i-check"/></svg>Owner and individual consent</li><li><svg><use href="#i-check"/></svg>Visible devices, no hidden cameras</li><li><svg><use href="#i-check"/></svg>Faces and names blurred on request</li></ul>
+    </div>
+    <div class="rv">
+      <svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg>
+      <h3>Secure, all the way</h3>
+      <p>Data moves from site to your storage with access limited to the people who need it.</p>
+      <ul><li><svg><use href="#i-check"/></svg>Delivered to your own bucket or drives</li><li><svg><use href="#i-check"/></svg>Access limited to your team</li><li><svg><use href="#i-check"/></svg>Never resold or reused for other clients</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- Lemni templates -->
+<section class="sec lemni" id="use-cases" aria-labelledby="tpl-title">
+  <div class="wrap">
+    <div class="tpl-head rv">
+      <h2 id="tpl-title" class="h-md">Start from a proven dataset shape</h2>
+      <p class="p-lg">Pick a starting point and we'll tailor sites, sensors and labels to your model.</p>
+      <a class="btn btn-glow" href="#request">Request data <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="tpls">
+      <div class="tpl rv"><i><svg aria-hidden="true"><use href="#i-wrist"/></svg></i><b>Egocentric manipulation</b><div class="tags"><span class="tag">Helmet cam</span><span class="tag">Wrist cam</span><span class="tag">Hand keypoints</span></div></div>
+      <div class="tpl rv"><i><svg aria-hidden="true"><use href="#i-mine"/></svg></i><b>Heavy tool use</b><div class="tags"><span class="tag">Helmet cam</span><span class="tag">IMU</span><span class="tag">Contact points</span></div></div>
+      <div class="tpl rv"><i><svg aria-hidden="true"><use href="#i-eye"/></svg></i><b>PPE and safety</b><div class="tags"><span class="tag">Fixed cams</span><span class="tag">People tracks</span><span class="tag">Events</span></div></div>
+      <div class="tpl rv"><i><svg aria-hidden="true"><use href="#i-box"/></svg></i><b>Line inspection</b><div class="tags"><span class="tag">Line cam</span><span class="tag">Defects</span><span class="tag">Masks</span></div></div>
+      <div class="tpl rv"><i><svg aria-hidden="true"><use href="#i-chip"/></svg></i><b>Machine tending</b><div class="tags"><span class="tag">Fixed cam</span><span class="tag">PLC data</span><span class="tag">Actions</span></div></div>
+      <div class="tpl rv"><i><svg aria-hidden="true"><use href="#i-leaf"/></svg></i><b>Field operations</b><div class="tags"><span class="tag">Drone</span><span class="tag">Vehicle cam</span><span class="tag">Multispectral</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Linear final CTA + form -->
+<section class="final" id="request" aria-labelledby="final-title">
+  <div class="wrap">
+    <h2 id="final-title" class="h-lg rv">Built for the real world.<br>Available today.</h2>
+    <div class="final__cta rv">
+      <a class="btn btn-white" href="#requestForm">Request data</a>
+      <a class="btn btn-dark" href="#requestForm">Talk to us</a>
+    </div>
+    <div class="formcard rv">
+      <h3>Request a sample</h3>
+      <p>Tell us what your model needs to see. We'll reply with a sample and the sites that can produce it.</p>
       <form class="form" id="requestForm" novalidate>
         <label>Name<input name="name" autocomplete="name" required maxlength="120"></label>
         <label>Work email<input name="email" type="email" autocomplete="email" required maxlength="200"></label>
@@ -275,26 +413,26 @@
         <label class="full">What should your model learn?<textarea name="need" maxlength="2000" placeholder="Tasks, environments, sensors and how much data you need"></textarea></label>
         <div class="hp" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label></div>
         <div class="full form__foot">
-          <button class="btn btn--film" type="submit">Request a sample <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
           <p class="form__msg" id="formMsg" role="status" aria-live="polite"></p>
+          <button class="btn btn-white" type="submit">Send request <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
         </div>
       </form>
     </div>
-  </section>
+  </div>
+</section>
 
 </main>
 
 <footer class="foot">
-  <div class="wrap foot__in">
-    <a class="mark" href="#main"><svg aria-hidden="true"><use href="#logo"/></svg>PULSE DATA</a>
-    <ul>
-      <li><a href="#access">Sites</a></li>
-      <li><a href="#install">What we install</a></li>
-      <li><a href="#ethics">Ethics &amp; quality</a></li>
-      <li><a href="#labels">Labelling</a></li>
-      <li><a href="#request">Request a sample</a></li>
-    </ul>
-    <small>© <span id="year">2026</span> Pulse Data. Physical-world data collection and labelling.</small>
+  <div class="wrap">
+    <div class="foot__grid">
+      <a class="brand" href="#main" aria-label="Pulse Data home"><svg aria-hidden="true"><use href="#logo"/></svg></a>
+      <div><h5>Product</h5><ul><li><a href="#collection">Collection</a></li><li><a href="#labelling">Labelling</a></li><li><a href="#network">Sensors</a></li><li><a href="#use-cases">Use cases</a></li></ul></div>
+      <div><h5>Network</h5><ul><li><a href="#ethics">Africa</a></li><li><a href="#ethics">India</a></li><li><a href="#ethics">Asia</a></li><li><a href="#ethics">Russia</a></li></ul></div>
+      <div><h5>Company</h5><ul><li><a href="#ethics">Ethics</a></li><li><a href="#ethics">Data quality</a></li><li><a href="#request">Contact</a></li></ul></div>
+      <div><h5>Connect</h5><ul><li><a href="#request">Request data</a></li><li><a href="#request">Become a partner site</a></li></ul></div>
+    </div>
+    <div class="foot__bottom"><span>© <span id="year">2026</span> Pulse Data</span><span>Real-world data for physical AI</span></div>
   </div>
 </footer>
 </body>
