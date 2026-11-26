@@ -1,32 +1,28 @@
-# Deploying to data.pulsepayments.co (Cloudflare Pages)
+# Deploying to data.pulsepayments.co (Cloudflare Workers)
 
-Cloudflare Pages builds the site from GitHub and redeploys on every push, so a push is a live update.
+Cloudflare builds the site from GitHub and redeploys on every push to the production branch, so a push is a live update.
 
-## One-time setup (about 5 minutes, in the Cloudflare dashboard)
+## One-time setup (Cloudflare dashboard → Workers & Pages → Create → Import a repository)
 
-1. Go to **Workers & Pages** → **Create** → **Pages** → **Connect to Git**.
-2. Authorise GitHub if asked, then pick the `pulsepayments/pulse-data` repository.
-3. Set up the build:
-   - **Project name:** `pulse-data`
-   - **Production branch:** `claude/inspiring-goldberg-xsldqr`, for now. Switch it to `main` once the work is merged there.
-   - **Framework preset:** None
+1. Pick `pulsepayments/pulse-data`.
+2. Fill in:
+   - **Project name:** `pulse-data` (must match `name` in `wrangler.jsonc`)
    - **Build command:** `sh build.sh`
-   - **Build output directory:** `dist`
-4. Click **Save and Deploy**. The site goes live at `pulse-data.pages.dev` (or a similar name) in about a minute.
-5. Open the project → **Custom domains** → **Set up a custom domain** → enter `data.pulsepayments.co` → **Activate domain**.
-   Because pulsepayments.co is already on Cloudflare, it adds the DNS record and HTTPS certificate for you. It's usually live within a few minutes.
+   - **Deploy command:** `npx wrangler deploy` (the default)
+   - **Preview command:** leave the default
+   - **Production branch** (under advanced settings, if shown): `claude/inspiring-goldberg-xsldqr` for now, then `main` once merged.
+3. Click **Deploy**.
+
+`wrangler.jsonc` attaches `data.pulsepayments.co` as a custom domain. Because pulsepayments.co is on the same Cloudflare account, the first deploy creates the DNS record and HTTPS certificate. If a DNS record for `data` already exists, delete it first or the deploy will refuse to take it over.
 
 ## Pushing live updates
 
-Commit and push to the production branch. Cloudflare rebuilds and the change is live in about a minute. Pushes to any other branch get their own preview URL, without touching the live site.
+Commit and push to the production branch. Cloudflare rebuilds and the change is live in about a minute. Other branches get preview versions without touching the live site.
 
 ## What gets published
 
-`build.sh` copies only `index.html`, `styles.css`, `main.js`, `_headers` and the images in `assets/` into `dist/`. Repo internals (`.claude/`, `PRODUCT.md`, `DESIGN.md`, `docs/`, `.impeccable/`) are never published.
-
-`_headers` applies the security headers (CSP, HSTS, anti-clickjacking) on Cloudflare Pages automatically.
+`build.sh` copies only `index.html`, `styles.css`, `main.js`, `_headers` and the images in `assets/` into `dist/`, which `wrangler.jsonc` serves. Repo internals (`.claude/`, `PRODUCT.md`, `DESIGN.md`, `docs/`, `.impeccable/`) are never published. `_headers` applies the security headers (CSP, HSTS, anti-clickjacking).
 
 ## Optional
 
-- **Hide the pages.dev address:** in the project, add a redirect rule (Rules → Redirect Rules on the pulsepayments.co zone, or a `_redirects` file) from `pulse-data.pages.dev` to `https://data.pulsepayments.co`.
-- **Analytics:** turn on Cloudflare Web Analytics for the project. It adds a script, so add `https://static.cloudflareinsights.com` to `script-src` and `https://cloudflareinsights.com` to `connect-src` in both the CSP meta tag and `_headers`.
+- **Analytics:** turn on Cloudflare Web Analytics. It adds a script, so add `https://static.cloudflareinsights.com` to `script-src` and `https://cloudflareinsights.com` to `connect-src` in both the CSP meta tag and `_headers`.
