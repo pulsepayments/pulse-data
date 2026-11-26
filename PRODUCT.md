@@ -52,6 +52,7 @@ Confirmed site types and regions in the partner network:
 
 - One underground mining frame: an egocentric view of a hand-held rock drill, hi-vis sleeves and gloves, timestamped 25/11/2026 08:42:17 (`assets/mine-drill.webp`). Provided by the founder for use as a sample dataset frame.
 - No customers, testimonials, case studies, volumes, prices, or benchmarks yet. Do not fabricate them.
+- Seller payout rates and referral/affiliate terms on `sellers.html` are EXAMPLE figures the founder asked for, based on published 2026 market rates for accepted footage ($6–25/h for egocentric recording, $10–50/h on footage marketplaces). They are labelled as examples on the page and must be replaced with real terms before they are relied on. Rates live in `SELLER_RATES` in `main.js` and the rate table in `sellers.html`.
 
 ## Product Principles
 

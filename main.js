@@ -72,6 +72,38 @@
     });
   }
 
+  // Data sellers: earnings estimator. EXAMPLE rates in USD per accepted hour, based on
+  // published 2026 market rates. Keep in sync with the rate table in sellers.html.
+  const SELLER_RATES = {
+    ego: { label: 'Egocentric task footage', min: 10, max: 25 },
+    multi: { label: 'Multi-sensor sessions', min: 20, max: 40 },
+    fixed: { label: 'Fixed-camera footage', min: 4, max: 10 },
+    archive: { label: 'Existing archive footage', min: 1, max: 5 },
+  };
+  const ACCEPT_RATE = 0.85;      // share of recorded hours expected to pass QA
+  const WEEKS_PER_MONTH = 52 / 12;
+  const calc = document.getElementById('calc');
+  if (calc) {
+    const $ = (id) => document.getElementById(id);
+    const usd = (n) => '$' + Math.round(n).toLocaleString('en-US');
+    const update = () => {
+      const r = SELLER_RATES[$('calcType').value] || SELLER_RATES.ego;
+      const hours = Number($('calcHours').value) || 0;
+      let mult = 1;
+      if ($('calcExclusive').checked) mult *= 1.25;
+      if ($('calcHard').checked) mult *= 1.2;
+      const accepted = hours * WEEKS_PER_MONTH * ACCEPT_RATE;
+      const lo = r.min * mult, hi = r.max * mult;
+      $('calcHoursOut').textContent = hours + ' h';
+      $('calcResult').textContent = usd(accepted * lo) + ' – ' + usd(accepted * hi);
+      $('calcDetail').textContent = 'About ' + Math.round(accepted).toLocaleString('en-US') + ' accepted hours a month at ' +
+        usd(lo) + '–' + usd(hi).slice(1) + ' per hour.';
+    };
+    calc.addEventListener('input', update);
+    calc.addEventListener('change', update);
+    update();
+  }
+
   const year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
 })();

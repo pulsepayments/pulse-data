@@ -16,7 +16,9 @@ You can also double-click `index.html`, but some browsers block the stylesheet a
 
 | File | What it is |
 |---|---|
-| `index.html` | The page |
+| `index.html` | The main landing page |
+| `labs.html` | Landing page for lab partners (data buyers) |
+| `sellers.html` | Landing page for data sellers, with the earnings estimator |
 | `styles.css` | All styles; colours and fonts are variables at the top |
 | `main.js` | Nav blur on scroll, reveal-on-scroll, the labels toggle and form checks |
 | `assets/mine-drill.webp` | The sample dataset frame |
