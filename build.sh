@@ -4,5 +4,5 @@
 set -e
 rm -rf dist
 mkdir -p dist/assets
-cp index.html labs.html sellers.html styles.css main.js _headers dist/
+cp index.html labs.html sellers.html favicon.svg styles.css main.js _headers dist/
 cp assets/*.webp assets/*.png dist/assets/
