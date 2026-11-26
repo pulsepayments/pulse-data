@@ -13,6 +13,8 @@
   // Blur-up reveal on scroll (Lemni behaviour). Content stays visible without JS.
   const items = document.querySelectorAll('.rv');
   if (!reduce && 'IntersectionObserver' in window) {
+    // Anything already on screen at load stays visible; only content below the fold fades in.
+    items.forEach((el) => { if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('in'); });
     root.classList.add('js');
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {

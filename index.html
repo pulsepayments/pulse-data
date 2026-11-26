@@ -63,8 +63,8 @@
     <div class="nav__right">
       <nav aria-label="Primary">
         <ul class="nav__links">
+          <li><a href="#datasets">Datasets</a></li>
           <li><a href="#collection">Collection</a></li>
-          <li><a href="#network">Network</a></li>
           <li><a href="#labelling">Labelling</a></li>
           <li><a href="#ethics">Ethics</a></li>
           <li><a href="#use-cases">Use cases</a></li>
@@ -83,12 +83,12 @@
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero__ghost" aria-hidden="true"><div>Helmet cam · underground drilling<span>Thermal · furnace tapping · casting line</span>Line cam · carton folding<span>Drone · harvest operations · field rows</span></div></div>
   <div class="wrap hero__in">
-    <a class="hero__new rv" href="#labelling"><b>New</b>Sample reel from an underground mine <svg width="12" height="12" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a class="hero__new rv" href="#datasets"><b>New</b>Sample datasets from four industries <svg width="12" height="12" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     <h1 id="hero-title" class="h-xl rv">Real-world data for physical AI</h1>
     <p class="p-lg rv">Pulse Data collects and labels data inside mines, foundries, factories and farms through family-owned operators, installing whatever sensors your model needs, ethically and cleanly.</p>
     <div class="hero__cta rv">
       <a class="btn btn-glow" href="#request">Request data <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      <a class="btn btn-ghost" href="#labelling">View sample <svg aria-hidden="true"><use href="#i-play"/></svg></a>
+      <a class="btn btn-ghost" href="#datasets">View samples <svg aria-hidden="true"><use href="#i-play"/></svg></a>
     </div>
   </div>
 
@@ -166,6 +166,22 @@
   </div>
 </section>
 
+<!-- Sample datasets -->
+<section class="sec sets" id="datasets" aria-labelledby="sets-title">
+  <div class="wrap">
+    <div class="split-head rv">
+      <h2 id="sets-title" class="h-lg">Sample datasets</h2>
+      <div><p class="p-lg">Real footage from partner sites, recorded on helmet cameras during normal shifts and ready for labelling.</p><a class="more" href="#request">Request the full sets <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+    </div>
+    <div class="sets__grid">
+      <figure class="set rv"><div class="set__img"><img src="assets/mine-drill.webp" alt="Helmet-camera view of a miner drilling into a wet underground rock face" width="1672" height="941" loading="lazy"><span class="rec tnum">REC 08:42:17</span></div><figcaption class="set__body"><small>Mine</small><b>Underground drilling</b><p>Hand-held rock drilling at the rock face, with both hands on the tool.</p><div class="tags"><span class="tag">Helmet cam</span><span class="tag">Hands</span><span class="tag">Tool contact</span></div></figcaption></figure>
+      <figure class="set rv"><div class="set__img"><img src="assets/foundry-casting.webp" alt="Helmet-camera view of gloved hands brushing sand off a freshly cast valve body on a foundry floor" width="1672" height="941" loading="lazy"><span class="rec tnum">REC 10:26:38</span></div><figcaption class="set__body"><small>Foundry</small><b>Casting finishing</b><p>Brushing moulding sand from a cast valve body before machining.</p><div class="tags"><span class="tag">Helmet cam</span><span class="tag">Hands</span><span class="tag">Surface</span></div></figcaption></figure>
+      <figure class="set rv"><div class="set__img"><img src="assets/packaging-sealing.webp" alt="Helmet-camera view of a worker sealing a cardboard carton with a tape gun next to a roller conveyor" width="1672" height="941" loading="lazy"><span class="rec tnum">REC 11:07:26</span></div><figcaption class="set__body"><small>Packaging</small><b>Carton sealing</b><p>Sealing cartons with a tape gun beside a roller conveyor.</p><div class="tags"><span class="tag">Helmet cam</span><span class="tag">Hands</span><span class="tag">Steps</span></div></figcaption></figure>
+      <figure class="set rv"><div class="set__img"><img src="assets/manufacturing-inspection.webp" alt="Helmet-camera view of gloved hands inspecting toothbrushes on a steel tray beside an automated production line" width="1672" height="941" loading="lazy"><span class="rec tnum">REC 12:18:43</span></div><figcaption class="set__body"><small>Manufacturing</small><b>Product inspection</b><p>Gloved visual inspection of toothbrushes coming off an automated line.</p><div class="tags"><span class="tag">Helmet cam</span><span class="tag">Hands</span><span class="tag">Quality check</span></div></figcaption></figure>
+    </div>
+  </div>
+</section>
+
 <div class="wrap">
   <p class="statement rv">A new kind of data partner. <span>Pulse Data works through the owners of real industrial businesses, so your models learn from real shifts, real tools and real conditions, not staged footage.</span></p>
 
@@ -196,16 +212,16 @@
         <div>
           <div class="col__h"><svg><use href="#i-sched"/></svg>Scheduled</div>
           <div class="card"><small>RU-FARM-002</small><p>Harvest operations</p><div class="tags"><span class="tag">Drone</span><span class="tag">Vehicle cam</span></div></div>
-          <div class="card"><small>AS-MFG-007</small><p>Bench assembly, hands</p><div class="tags"><span class="tag">Wrist cam</span><span class="tag">Egocentric</span></div></div>
+          <div class="card"><small>AS-MFG-007</small><p>Product inspection</p><div class="tags"><span class="tag">Helmet cam</span><span class="tag">Quality check</span></div></div>
         </div>
         <div>
           <div class="col__h"><svg><use href="#i-prog"/></svg>Installing</div>
-          <div class="card"><small>AF-FDRY-003</small><p>Casting pour</p><div class="tags"><span class="tag">Thermal</span><span class="tag">Fixed cam</span></div></div>
+          <div class="card"><small>AF-FDRY-003</small><p>Casting finishing</p><div class="tags"><span class="tag">Helmet cam</span><span class="tag">Thermal</span></div></div>
         </div>
         <div>
           <div class="col__h"><svg><use href="#i-rec"/></svg>Recording</div>
           <div class="card"><small>AF-MINE-014</small><p>Underground drilling</p><div class="tags"><span class="tag">Helmet cam</span><span class="tag">IMU</span></div></div>
-          <div class="card"><small>IN-PACK-011</small><p>Carton folding line</p><div class="tags"><span class="tag">Line cam</span><span class="tag">Hands</span></div></div>
+          <div class="card"><small>IN-PACK-011</small><p>Carton sealing</p><div class="tags"><span class="tag">Line cam</span><span class="tag">Hands</span></div></div>
         </div>
         <div>
           <div class="col__h"><svg><use href="#i-done"/></svg>Delivered</div>
@@ -277,8 +293,8 @@
   <div class="lshot" aria-hidden="true">
     <div class="lshot__in">
       <div class="lshot__side"><div>Pulse Data</div><small>Workspace</small><div>Sessions</div><div class="on">Labels</div><div>Exports</div><small>Sites</small><div>Mines</div><div>Foundries</div><div>Packaging</div><div>Manufacturing</div><div>Farms</div></div>
-      <div class="lshot__img"><img src="assets/mine-drill.webp" alt="" width="1672" height="941" loading="lazy"></div>
-      <div class="lshot__list"><b>Labels</b><div>Rock drill · box</div><div>Left hand · keypoints</div><div>Right hand · keypoints</div><div>Bit contact · point</div><div>Rock face · mask</div><div>Action · drilling</div></div>
+      <div class="lshot__img"><img src="assets/manufacturing-inspection.webp" alt="" width="1672" height="941" loading="lazy"></div>
+      <div class="lshot__list"><b>Labels</b><div>Toothbrush · box</div><div>Bristle head · inspect</div><div>Left hand · keypoints</div><div>Right hand · keypoints</div><div>Tray · region</div><div>Action · inspecting</div></div>
     </div>
   </div>
 </section>
@@ -320,11 +336,11 @@
         <div class="q"><small>LBL-2038</small><svg><use href="#i-done"/></svg>Bit contact points</div>
         <div class="q"><small>LBL-2032</small><svg><use href="#i-done"/></svg>Rock face mask</div>
         <div class="qh"><svg><use href="#i-prog"/></svg>In progress <small>2</small></div>
-        <div class="q"><small>LBL-2027</small><svg><use href="#i-prog"/></svg>Carton folding steps</div>
-        <div class="q"><small>LBL-2019</small><svg><use href="#i-prog"/></svg>PPE on the line</div>
+        <div class="q"><small>LBL-2027</small><svg><use href="#i-prog"/></svg>Carton sealing steps</div>
+        <div class="q"><small>LBL-2019</small><svg><use href="#i-prog"/></svg>Toothbrush inspection</div>
         <div class="qh"><svg><use href="#i-todo"/></svg>Todo <small>2</small></div>
         <div class="q"><small>LBL-2014</small><svg><use href="#i-todo"/></svg>Harvest actions</div>
-        <div class="q"><small>LBL-2010</small><svg><use href="#i-todo"/></svg>Casting pour regions</div>
+        <div class="q"><small>LBL-2010</small><svg><use href="#i-todo"/></svg>Casting sand regions</div>
       </div>
       <figure class="viewer" id="viewer" data-labels="on">
         <div class="viewer__bar"><span class="tnum">AF-MINE-014 / frame 0414<span class="hide-sm"> · action: drilling</span></span><button class="switch" id="labelToggle" type="button" aria-pressed="true" aria-controls="viewer"><i aria-hidden="true"></i>Labels</button></div>
@@ -427,7 +443,7 @@
   <div class="wrap">
     <div class="foot__grid">
       <a class="brand" href="#main" aria-label="Pulse Data home"><svg aria-hidden="true"><use href="#logo"/></svg></a>
-      <div><h5>Product</h5><ul><li><a href="#collection">Collection</a></li><li><a href="#labelling">Labelling</a></li><li><a href="#network">Sensors</a></li><li><a href="#use-cases">Use cases</a></li></ul></div>
+      <div><h5>Product</h5><ul><li><a href="#datasets">Datasets</a></li><li><a href="#collection">Collection</a></li><li><a href="#labelling">Labelling</a></li><li><a href="#network">Sensors</a></li><li><a href="#use-cases">Use cases</a></li></ul></div>
       <div><h5>Network</h5><ul><li><a href="#ethics">Africa</a></li><li><a href="#ethics">India</a></li><li><a href="#ethics">Asia</a></li><li><a href="#ethics">Russia</a></li></ul></div>
       <div><h5>Company</h5><ul><li><a href="#ethics">Ethics</a></li><li><a href="#ethics">Data quality</a></li><li><a href="#request">Contact</a></li></ul></div>
       <div><h5>Connect</h5><ul><li><a href="#request">Request data</a></li><li><a href="#request">Become a partner site</a></li></ul></div>
